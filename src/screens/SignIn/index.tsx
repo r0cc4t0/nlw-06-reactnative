@@ -3,7 +3,7 @@ import { View, Text, TextInput } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import styles from './styles';
 
-function Main() {
+function SignIn() {
   const [text, setText] = useState('Hello, World!');
 
   return (
@@ -17,4 +17,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default SignIn;

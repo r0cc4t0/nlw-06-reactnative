@@ -1,8 +1,8 @@
 import React from 'react';
-import Main from './src/screens/Main';
+import SignIn from './src/screens/SignIn';
 
 export default function App() {
   return (
-    <Main />
+    <SignIn />
   );
 }
