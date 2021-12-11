@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { View, StatusBar, Image, Text } from 'react-native';
+import ButtonIcon from '../../components/ButtonIcon';
 import styles from './styles';
+import illustrationImg from '../../assets/illustration.png';
 
 function SignIn() {
-  const [text, setText] = useState('Hello, World!');
-
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
+      <StatusBar barStyle='light-content' backgroundColor='transparent' translucent />
 
-      <TextInput style={styles.input} onChangeText={setText} />
+      <Image source={illustrationImg} style={styles.image} resizeMode='stretch' />
 
-      <Text style={styles.text}>Você digitou: {text}</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>
+          Organize {`\n`}
+          suas jogatinas {`\n`}
+          facilmente
+        </Text>
+
+        <Text style={styles.subtitle}>
+          Crie grupos para jogar seus games {`\n`}
+          favoritos com seus amigos.
+        </Text>
+
+        <ButtonIcon />
+      </View>
     </View>
   );
 }
