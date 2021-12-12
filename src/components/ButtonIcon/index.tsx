@@ -1,18 +1,20 @@
 import React from 'react';
-import { TouchableOpacity, View, Image, Text } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, View, Image, Text } from 'react-native';
 import styles from './styles';
 import discordImg from '../../assets/discord.png';
 
-function ButtonIcon() {
+type Props = TouchableOpacityProps & {
+  title: string;
+};
+
+function ButtonIcon({ title, ...rest }: Props) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} {...rest}>
       <View style={styles.iconWrapper}>
         <Image source={discordImg} style={styles.icon} />
       </View>
 
-      <Text style={styles.title}>
-        Entrar com o Discord
-      </Text>
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 }

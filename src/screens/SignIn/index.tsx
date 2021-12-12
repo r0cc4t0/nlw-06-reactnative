@@ -23,7 +23,7 @@ function SignIn() {
           favoritos com seus amigos.
         </Text>
 
-        <ButtonIcon />
+        <ButtonIcon title='Entrar com o Discord' activeOpacity={0.75} />
       </View>
     </View>
   );
