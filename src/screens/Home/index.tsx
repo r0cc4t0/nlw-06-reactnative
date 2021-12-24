@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, FlatList } from 'react-native';
+import Background from '../../components/Background';
 import Profile from '../../components/Profile';
 import ButtonAdd from '../../components/ButtonAdd';
 import CategorySelect from '../../components/CategorySelect';
@@ -23,6 +24,18 @@ function Home() {
       category: '1',
       date: '22/06 às 20:40',
       description: 'É hoje que vamos chegar ao Challenger sem perder uma partida de MD10!'
+    },
+    {
+      id: '2',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '23/06 às 19:50',
+      description: 'É hoje que vamos chegar ao Challenger sem perder uma partida de MD10!'
     }
   ];
 
@@ -31,14 +44,18 @@ function Home() {
   }
 
   return (
-    <View style={styles.container}>
+    <Background>
       <View style={styles.header}>
         <Profile />
 
         <ButtonAdd />
       </View>
 
-      <CategorySelect categorySelected={category} setCategory={handleCategorySelect} />
+      <CategorySelect
+        categorySelected={category}
+        setCategory={handleCategorySelect}
+        hasCheckBox={true}
+      />
 
       <View style={styles.content}>
         <ListHeader title='Partidas Agendadas' subtitle='Total 6' />
@@ -54,7 +71,7 @@ function Home() {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-    </View>
+    </Background>
   );
 }
 
