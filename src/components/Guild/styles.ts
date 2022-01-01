@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 20
   },
 
   title: {
@@ -24,8 +25,7 @@ const styles = StyleSheet.create({
   type: {
     fontFamily: theme.fonts.text400,
     color: theme.colors.highlight,
-    fontSize: 13,
-    marginBottom: 12
+    fontSize: 13
   }
 });
 
