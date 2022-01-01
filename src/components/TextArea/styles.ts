@@ -7,11 +7,15 @@ const styles = StyleSheet.create({
     height: 95,
     backgroundColor: theme.colors.secondary40,
     color: theme.colors.heading,
-    borderRadius: 8,
     fontFamily: theme.fonts.text400,
     fontSize: 13,
     marginRight: 4,
-    textAlign: 'center'
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: theme.colors.secondary50,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    textAlignVertical: 'top'
   }
 });
 
