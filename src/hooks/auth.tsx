@@ -48,11 +48,11 @@ function AuthProvider({ children }: AuthProviderProps) {
 
         const userInfo = await api.get('/users/@me');
 
-        const firstName = userInfo.data.username.split(' ')[0];
+        const firstname = userInfo.data.username.split(' ')[0];
 
         userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
 
-        setUser({ ...userInfo.data, firstName, token: params.access_token });
+        setUser({ ...userInfo.data, firstname, token: params.access_token });
 
         setLoading(false);
       }
