@@ -7,7 +7,7 @@ import theme from '../global/styles/theme';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-function AuthRoutes() {
+function AppRoutes() {
   return (
     <Navigator
       screenOptions={{
@@ -24,4 +24,4 @@ function AuthRoutes() {
   );
 }
 
-export default AuthRoutes;
+export default AppRoutes;
