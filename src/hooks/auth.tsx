@@ -1,6 +1,8 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
+import React, { ReactNode, createContext, useContext, useState, useEffect } from 'react';
 import * as AuthSession from 'expo-auth-session';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
+import { COLLECTION_USERS } from '../configs/database';
 
 const { REDIRECT_URI } = process.env;
 const { SCOPE } = process.env;
@@ -58,7 +60,11 @@ function AuthProvider({ children }: AuthProviderProps) {
 
         userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
 
-        setUser({ ...userInfo.data, firstname, token: params.access_token });
+        const userData = { ...userInfo.data, firstname, token: params.access_token };
+
+        await AsyncStorage.setItem(COLLECTION_USERS, JSON.stringify(userData));
+
+        setUser(userData);
       }
     }
     catch {
@@ -68,6 +74,22 @@ function AuthProvider({ children }: AuthProviderProps) {
       setLoading(false);
     }
   }
+
+  async function loadUserStorageData() {
+    const storage = await AsyncStorage.getItem(COLLECTION_USERS);
+
+    if (storage) {
+      const userLogged = JSON.parse(storage) as User;
+
+      api.defaults.headers.common['Authorization'] = `Bearer ${userLogged.token}`;
+
+      setUser(userLogged);
+    }
+  }
+
+  useEffect(() => {
+    loadUserStorageData();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, loading, signIn }}>
